@@ -13,9 +13,7 @@ export default function Home() {
       <TheQuestion />
       <TheSource />
       <ProductShowcase />
-      <div className="hidden md:block">
-        <TheJourney />
-      </div>
+      <TheJourney />
       <Quality />
       <FinalCTA />
     </>

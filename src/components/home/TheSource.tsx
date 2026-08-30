@@ -18,10 +18,10 @@ export function TheSource() {
 
   return (
     <section ref={containerRef} className="bg-ivory text-dark-green relative h-[300vh]">
-      <div className="sticky top-0 h-screen overflow-hidden flex flex-col md:flex-row items-center px-6 md:px-12">
+      <div className="sticky top-0 min-h-[100svh] overflow-hidden flex flex-col md:flex-row items-center px-6 md:px-12 py-24 md:py-0">
         
         {/* Left: Sticky Text */}
-        <div className="w-full md:w-1/2 flex flex-col items-start gap-8 z-20 relative">
+        <div className="w-full md:w-1/2 flex flex-col items-start justify-center gap-6 md:gap-8 z-20 relative h-full">
           <motion.span 
             initial={{ opacity: 0, x: -20 }}
             whileInView={{ opacity: 1, x: 0 }}

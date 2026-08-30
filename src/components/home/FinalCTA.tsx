@@ -29,7 +29,7 @@ export function FinalCTA() {
           viewport={{ once: true, margin: "-100px" }}
           transition={{ duration: 0.8, ease: "easeOut" }}
         >
-          <h2 className="text-5xl md:text-7xl lg:text-[7rem] font-bold tracking-tighter leading-[0.85] uppercase mb-12">
+          <h2 className="text-4xl sm:text-5xl md:text-7xl lg:text-[7rem] font-bold tracking-tighter leading-[0.85] uppercase mb-12">
             Ready To<br />
             Bring Freshness<br />
             <span className="text-leaf">To Your Business?</span>

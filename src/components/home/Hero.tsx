@@ -23,17 +23,17 @@ export function Hero() {
           transition={{ duration: 0.8, delay: 0.2, ease: "easeOut" }}
           className="flex flex-col items-center"
         >
-          <span className="uppercase tracking-[0.2em] text-sm font-semibold text-dark-green/60 mb-6">
+          <span className="uppercase tracking-[0.2em] text-[10px] sm:text-sm font-semibold text-dark-green/60 mb-6">
             Al Bakri Fresh Produce
           </span>
           
-          <h1 className="text-6xl md:text-8xl lg:text-[9rem] font-bold tracking-tighter leading-[0.85] text-dark-green uppercase">
+          <h1 className="text-[3rem] sm:text-6xl md:text-8xl lg:text-[9rem] font-bold tracking-tighter leading-[0.85] text-dark-green uppercase">
             <span className="block">Freshness,</span>
             <span className="block text-leaf">With a</span>
             <span className="block">Purpose.</span>
           </h1>
           
-          <p className="mt-8 md:mt-12 text-lg md:text-xl text-dark-green/70 max-w-xl font-medium text-balance">
+          <p className="mt-6 sm:mt-8 md:mt-12 text-base sm:text-lg md:text-xl text-dark-green/70 max-w-xl font-medium text-balance">
             From the source, delivered with care. Your trusted produce partner for businesses worldwide.
           </p>
         </motion.div>
