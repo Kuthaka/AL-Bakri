@@ -61,13 +61,13 @@ export function TheJourney() {
 
         <div className="flex-1 relative w-full flex items-center">
           <motion.div 
-            className="flex gap-12 px-6 md:px-12 h-[60vh] md:h-[70vh]" 
+            className="flex gap-6 md:gap-12 px-6 md:px-12 h-[50vh] md:h-[70vh]" 
             style={{ x, width: `${STAGES.length * 100}vw` }}
           >
             {STAGES.map((stage) => (
               <div
                 key={stage.num}
-                className="relative w-[85vw] md:w-[60vw] lg:w-[45vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-2xl"
+                className="relative w-[75vw] md:w-[60vw] lg:w-[45vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-2xl"
               >
                 <img
                   src={stage.image}
@@ -77,12 +77,12 @@ export function TheJourney() {
                 <div className="absolute inset-0 bg-dark-green/40" />
                 
                 {/* Content Overlay */}
-                <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
-                  <div className="flex flex-col gap-4">
-                    <span className="text-leaf text-2xl font-mono">{stage.num}</span>
+                <div className="absolute inset-0 p-6 md:p-12 flex flex-col justify-end">
+                  <div className="flex flex-col gap-2 md:gap-4">
+                    <span className="text-leaf text-xl md:text-2xl font-mono">{stage.num}</span>
                     <div>
-                      <h3 className="text-3xl md:text-5xl font-bold uppercase mb-4">{stage.title}</h3>
-                      <p className="text-lg md:text-xl text-ivory/80 text-balance">
+                      <h3 className="text-2xl sm:text-3xl md:text-5xl font-bold uppercase mb-2 md:mb-4">{stage.title}</h3>
+                      <p className="text-base md:text-xl text-ivory/80 text-balance">
                         {stage.text}
                       </p>
                     </div>
