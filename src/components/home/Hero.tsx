@@ -44,15 +44,24 @@ export function Hero() {
         className="absolute z-20 w-full h-full inset-0 pointer-events-none flex items-center justify-center mt-20"
         style={{ y: y1 }}
       >
-        <motion.img
+        <motion.div
           initial={{ opacity: 0, scale: 0.8 }}
-          animate={{ opacity: 1, scale: 1 }}
+          animate={{ opacity: 0.7, scale: 1 }}
           transition={{ duration: 1.2, delay: 0.4, ease: "easeOut" }}
-          src="/fruits/Large_Red_Apples_PNG_Clipart.png"
-          alt="Premium Mango"
-          className="w-[280px] h-[280px] md:w-[450px] md:h-[450px] lg:w-[600px] lg:h-[600px] object-cover rounded-full shadow-2xl shadow-dark-green/20"
+          className="relative flex items-center justify-center w-[280px] h-[280px] md:w-[450px] md:h-[450px] lg:w-[600px] lg:h-[600px] rounded-full shadow-2xl shadow-dark-green/20"
           style={{ scale }}
-        />
+        >
+          {/* Optional: add a subtle background to the circle if needed, or leave it transparent. 
+              Since it's a PNG, maybe the user wants a subtle circle background. 
+              I'll add a very subtle ivory/10 or border so the circle is visible. */}
+          <div className="absolute inset-0 rounded-full border border-dark-green/10 bg-ivory/5" />
+          
+          <img
+            src="/fruits/Large_Red_Apples_PNG_Clipart.png"
+            alt="Premium Produce"
+            className="w-[60%] h-[60%] object-contain relative z-10"
+          />
+        </motion.div>
       </motion.div>
 
       {/* Scroll Indicator */}
