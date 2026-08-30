@@ -43,10 +43,13 @@ export function TheJourney() {
     offset: ["start start", "end end"]
   });
 
+  // Since we have 5 stages, the track moves from 0% to -80% (which leaves the last 20% on screen)
+  const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
+
   return (
     <section ref={containerRef} className="bg-dark-green text-ivory relative h-[500vh]">
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col pt-24 md:pt-32">
-        <div className="max-w-7xl mx-auto w-full px-6 md:px-12 z-20 mb-8">
+        <div className="max-w-7xl mx-auto w-full px-6 md:px-12 z-20 mb-8 shrink-0">
           <span className="inline-block text-sm font-semibold tracking-widest uppercase mb-4 border border-ivory/20 rounded-full px-4 py-2">
             04 / The Process
           </span>
@@ -56,52 +59,38 @@ export function TheJourney() {
           </h2>
         </div>
 
-        <div className="flex-1 relative w-full h-full flex items-center justify-center">
-          
-          {/* Images */}
-          {STAGES.map((stage, index) => {
-            // Mapping scroll progress to opacity for each stage
-            const start = index * 0.2;
-            const end = (index + 1) * 0.2;
-            // Use safe inner bounds to prevent negative or >1 values which break WAAPI
-            const opacity = useTransform(
-              scrollYProgress, 
-              [start, start + 0.05, end - 0.05, end], 
-              [0, 1, 1, 0]
-            );
-            const scale = useTransform(scrollYProgress, [start, end], [1.1, 1]);
-
-            return (
-              <motion.div
+        <div className="flex-1 relative w-full flex items-center">
+          <motion.div 
+            className="flex gap-12 px-6 md:px-12 h-[60vh] md:h-[70vh]" 
+            style={{ x, width: `${STAGES.length * 100}vw` }}
+          >
+            {STAGES.map((stage) => (
+              <div
                 key={stage.num}
-                className="absolute inset-0 max-w-5xl mx-auto h-[60vh] md:h-[70vh] top-1/2 -translate-y-1/2 rounded-3xl overflow-hidden px-6"
-                style={{ opacity }}
+                className="relative w-[85vw] md:w-[60vw] lg:w-[45vw] h-full shrink-0 rounded-3xl overflow-hidden shadow-2xl"
               >
-                <div className="w-full h-full relative rounded-3xl overflow-hidden shadow-2xl">
-                  <motion.img
-                    src={stage.image}
-                    alt={stage.title}
-                    className="absolute inset-0 w-full h-full object-cover"
-                    style={{ scale }}
-                  />
-                  <div className="absolute inset-0 bg-dark-green/40" />
-                  
-                  {/* Content Overlay */}
-                  <div className="absolute inset-0 p-8 md:p-16 flex flex-col justify-end">
-                    <div className="flex items-start gap-4">
-                      <span className="text-leaf text-2xl font-mono">{stage.num}</span>
-                      <div>
-                        <h3 className="text-4xl md:text-6xl font-bold uppercase mb-4">{stage.title}</h3>
-                        <p className="text-xl md:text-2xl text-ivory/80 max-w-lg text-balance">
-                          {stage.text}
-                        </p>
-                      </div>
+                <img
+                  src={stage.image}
+                  alt={stage.title}
+                  className="absolute inset-0 w-full h-full object-cover"
+                />
+                <div className="absolute inset-0 bg-dark-green/40" />
+                
+                {/* Content Overlay */}
+                <div className="absolute inset-0 p-8 md:p-12 flex flex-col justify-end">
+                  <div className="flex flex-col gap-4">
+                    <span className="text-leaf text-2xl font-mono">{stage.num}</span>
+                    <div>
+                      <h3 className="text-3xl md:text-5xl font-bold uppercase mb-4">{stage.title}</h3>
+                      <p className="text-lg md:text-xl text-ivory/80 text-balance">
+                        {stage.text}
+                      </p>
                     </div>
                   </div>
                 </div>
-              </motion.div>
-            );
-          })}
+              </div>
+            ))}
+          </motion.div>
         </div>
 
         {/* Progress Bar */}
