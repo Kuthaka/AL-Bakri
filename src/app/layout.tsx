@@ -24,8 +24,8 @@ export default function RootLayout({
   children: React.ReactNode;
 }>) {
   return (
-    <html lang="en" className={`${inter.variable} h-full antialiased`}>
-      <body className="min-h-full flex flex-col font-sans bg-ivory text-dark-green">
+    <html lang="en" className={`${inter.variable} antialiased`}>
+      <body className="flex flex-col font-sans bg-ivory text-dark-green min-h-screen">
         <SmoothScroll>
           <Navbar />
           <main className="flex-1 flex flex-col">{children}</main>
