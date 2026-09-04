@@ -13,7 +13,7 @@ export function Hero() {
     <section className="relative min-h-[100svh] flex flex-col md:flex-row items-center justify-center overflow-hidden pt-24 pb-28 md:pt-20 md:pb-0">
       
       {/* Background Subtle Gradient */}
-      <div className="absolute inset-0 bg-gradient-to-b from-ivory via-ivory to-ivory/50 z-0" />
+      <div className="absolute inset-0 bg-[#FFBF00] z-0" />
 
       {/* ─── MOBILE LAYOUT: Vertical Stack ─── */}
       <div className="relative z-10 w-full flex flex-col items-center gap-10 px-6 md:hidden">

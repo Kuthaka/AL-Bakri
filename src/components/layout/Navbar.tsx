@@ -32,7 +32,7 @@ export function Navbar() {
         className={cn(
           "fixed z-50 transition-all duration-300 ease-in-out px-6 md:px-8 left-4 right-4 md:left-8 md:right-8 lg:left-1/2 lg:-translate-x-1/2 lg:w-[calc(100%-4rem)] lg:max-w-7xl",
           isScrolled 
-            ? "top-4 py-4 bg-ivory/90 backdrop-blur-md border border-dark-green/10 shadow-lg rounded-2xl" 
+            ? "top-4 py-4 bg-[#FFF78D]/90 backdrop-blur-md border border-dark-green/10 shadow-lg rounded-2xl" 
             : "top-0 py-6 bg-transparent border border-transparent rounded-none"
         )}
         initial={{ y: -100 }}
@@ -82,7 +82,7 @@ export function Navbar() {
       {/* Mobile Menu Overlay */}
       {isMobileMenuOpen && (
         <motion.div
-          className="fixed inset-0 z-40 bg-ivory flex flex-col items-center justify-center pt-20 px-6"
+          className="fixed inset-0 z-40 bg-[#FFF78D] flex flex-col items-center justify-center pt-20 px-6"
           initial={{ opacity: 0, y: -20 }}
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
