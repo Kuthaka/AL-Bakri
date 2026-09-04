@@ -58,13 +58,19 @@ export function Navbar() {
                 key={link.name}
                 href={link.href}
                 className={cn(
-                  "text-sm font-medium tracking-wide transition-colors",
+                  "group relative py-1 text-sm font-medium tracking-wide transition-colors",
                   isScrolled 
                     ? "text-dark-green/80 hover:text-dark-green" 
                     : "text-white/80 hover:text-white"
                 )}
               >
                 {link.name}
+                <span 
+                  className={cn(
+                    "absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 ease-out group-hover:w-full rounded-full",
+                    isScrolled ? "bg-dark-green" : "bg-white"
+                  )} 
+                />
               </Link>
             ))}
           </nav>
@@ -111,10 +117,11 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-4xl font-bold tracking-tight text-dark-green"
+                className="group relative py-1 text-4xl font-bold tracking-tight text-dark-green"
                 onClick={() => setIsMobileMenuOpen(false)}
               >
                 {link.name}
+                <span className="absolute bottom-0 left-0 w-0 h-[3px] bg-dark-green transition-all duration-300 ease-out group-hover:w-full rounded-full" />
               </Link>
             ))}
             <Link
