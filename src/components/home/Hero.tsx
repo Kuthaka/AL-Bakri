@@ -46,7 +46,7 @@ export function Hero() {
           <img 
             src="/products/avacado.png" 
             alt="Avocado" 
-            className="h-full w-auto object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-500"
+            className="h-full w-auto object-contain drop-shadow-2xl scale-[1.55] hover:scale-125 transition-transform duration-500"
           />
         </motion.div>
 
@@ -63,46 +63,49 @@ export function Hero() {
           </div>
         </div>
 
-        {/* 4. Both Texts in a Single Row */}
-        <div className="flex flex-row items-center justify-between w-full max-w-sm px-2 gap-3 mt-1">
-          {/* Left Text: 100% Produce */}
-          <div className="flex items-center gap-2">
-            <span className="text-2xl font-bold tracking-tight text-[#0A2612]">100%</span>
-            <span className="text-[11px] font-semibold leading-tight text-[#0A2612] text-left">Natural<br/>Produce</span>
-          </div>
-
-          {/* Right Text: Fruits & Sugar stats */}
-          <div className="flex items-center gap-3 text-left">
-            <div className="flex items-center gap-1.5">
-              <div className="w-6 h-6 rounded-full bg-[#0A2612] flex items-center justify-center">
-                <Leaf className="w-3 h-3 text-white" />
-              </div>
-              <div>
-                <span className="block font-bold text-[#0A2612] text-xs leading-none">12+</span>
-                <span className="text-[9px] font-semibold text-[#0A2612]/70 uppercase">Fruits</span>
-              </div>
+        {/* 4 & 5. Tightly Grouped: Stats Row + Order Now Button with reduced gap */}
+        <div className="flex flex-col items-center w-full max-w-sm gap-2 mt-1">
+          {/* Both Texts in a Single Row */}
+          <div className="flex flex-row items-center justify-between w-full px-2 gap-3">
+            {/* Left Text: 100% Produce */}
+            <div className="flex items-center gap-2">
+              <span className="text-2xl font-bold tracking-tight text-[#0A2612]">100%</span>
+              <span className="text-[11px] font-semibold leading-tight text-[#0A2612] text-left">Natural<br/>Produce</span>
             </div>
 
-            <div className="flex items-center gap-1.5">
-              <div className="w-6 h-6 rounded-full bg-[#0A2612] flex items-center justify-center">
-                <Droplet className="w-3 h-3 text-white" />
+            {/* Right Text: Fruits & Sugar stats */}
+            <div className="flex items-center gap-3 text-left">
+              <div className="flex items-center gap-1.5">
+                <div className="w-6 h-6 rounded-full bg-[#0A2612] flex items-center justify-center">
+                  <Leaf className="w-3 h-3 text-white" />
+                </div>
+                <div>
+                  <span className="block font-bold text-[#0A2612] text-xs leading-none">12+</span>
+                  <span className="text-[9px] font-semibold text-[#0A2612]/70 uppercase">Fruits</span>
+                </div>
               </div>
-              <div>
-                <span className="block font-bold text-[#0A2612] text-xs leading-none">0%</span>
-                <span className="text-[9px] font-semibold text-[#0A2612]/70 uppercase">Sugar</span>
+
+              <div className="flex items-center gap-1.5">
+                <div className="w-6 h-6 rounded-full bg-[#0A2612] flex items-center justify-center">
+                  <Droplet className="w-3 h-3 text-white" />
+                </div>
+                <div>
+                  <span className="block font-bold text-[#0A2612] text-xs leading-none">0%</span>
+                  <span className="text-[9px] font-semibold text-[#0A2612]/70 uppercase">Sugar</span>
+                </div>
               </div>
             </div>
           </div>
-        </div>
 
-        {/* 5. Order Now Button below that */}
-        <div className="flex justify-center w-full mt-1">
-          <Link
-            href="/products"
-            className="bg-[#0A2612] text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-[#0A2612]/90 transition-all shadow-md active:scale-95"
-          >
-            Order Now
-          </Link>
+          {/* Order Now Button - right below with tight gap */}
+          <div className="flex justify-center w-full mt-1">
+            <Link
+              href="/products"
+              className="bg-[#0A2612] text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-[#0A2612]/90 transition-all shadow-md active:scale-95"
+            >
+              Order Now
+            </Link>
+          </div>
         </div>
 
       </div>
