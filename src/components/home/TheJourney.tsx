@@ -6,32 +6,32 @@ import { useRef } from "react";
 const STAGES = [
   {
     num: "01",
-    title: "Source",
-    text: "Carefully selected from trusted growing regions.",
+    title: "Cultivate",
+    text: "Dedicated farmers carefully nurturing crops in rich, fertile soils.",
     image: "/fruits/Large_Red_Apples_PNG_Clipart.png"
   },
   {
     num: "02",
-    title: "Select",
-    text: "Only produce that meets our standards moves forward.",
+    title: "Ripen",
+    text: "Allowing fruits and vegetables to reach their peak natural sweetness.",
     image: "/fruits/152571-photos-black-grapes-download-hd.png"
   },
   {
     num: "03",
-    title: "Quality",
-    text: "Every batch is inspected for freshness and consistency.",
+    title: "Harvest",
+    text: "Hand-picking at the perfect moment for maximum freshness and flavor.",
     image: "/fruits/pngtree-delicious-black-grapes-png-image_20004046.png"
   },
   {
     num: "04",
     title: "Pack",
-    text: "Handled and packed with care for safe transport.",
+    text: "Carefully sorted and securely packed to preserve farm-fresh quality.",
     image: "/fruits/Large_Red_Apples_PNG_Clipart.png"
   },
   {
     num: "05",
     title: "Deliver",
-    text: "Prepared for reliable business supply worldwide.",
+    text: "Swift and reliable transport from the farm directly to your business.",
     image: "/fruits/152571-photos-black-grapes-download-hd.png"
   }
 ];

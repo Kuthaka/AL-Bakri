@@ -32,7 +32,7 @@ export function ProductShowcase() {
         </div>
 
         {/* Minimalist Spacious Grid */}
-        <div className="grid grid-cols-1 md:grid-cols-2 lg:grid-cols-4 gap-12 lg:gap-8">
+        <div className="grid grid-cols-2 md:grid-cols-2 lg:grid-cols-4 gap-4 md:gap-12 lg:gap-8">
           {featuredProducts.map((product, index) => (
             <motion.div 
               key={product.id}
@@ -43,9 +43,9 @@ export function ProductShowcase() {
             >
               <Link 
                 href={`/products/${product.slug}`} 
-                className="group flex flex-col gap-6 items-center text-center"
+                className="group flex flex-col gap-3 md:gap-6 items-center text-center"
               >
-                <div className="w-full aspect-[4/5] rounded-[2rem] bg-dark-green/5 border border-dark-green/10 flex items-center justify-center p-8 transition-colors duration-500 group-hover:bg-dark-green/10">
+                <div className="w-full aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] bg-dark-green/5 border border-dark-green/10 flex items-center justify-center p-4 md:p-8 transition-colors duration-500 group-hover:bg-dark-green/10">
                   <motion.img 
                     src={product.image} 
                     alt={product.name}
@@ -53,12 +53,12 @@ export function ProductShowcase() {
                   />
                 </div>
                 
-                <div className="flex flex-col items-center gap-2 px-4">
-                  <span className="text-leaf font-semibold text-xs tracking-widest uppercase">
+                <div className="flex flex-col items-center gap-1 md:gap-2 px-2 md:px-4">
+                  <span className="text-leaf font-semibold text-[10px] md:text-xs tracking-widest uppercase">
                     {product.category}
                   </span>
-                  <h3 className="text-2xl font-bold">{product.name}</h3>
-                  <p className="text-dark-green/60 text-sm leading-relaxed max-w-[200px] text-balance">
+                  <h3 className="text-base md:text-2xl font-bold">{product.name}</h3>
+                  <p className="text-dark-green/60 text-xs md:text-sm leading-relaxed max-w-[200px] text-balance">
                     {product.shortDescription}
                   </p>
                 </div>
