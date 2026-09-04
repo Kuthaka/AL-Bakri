@@ -32,11 +32,21 @@ export function Hero() {
   const currentFruit = HERO_FRUITS[fruitIndex];
 
   return (
-    <section className="relative min-h-[100svh] w-full bg-[#0A7C6E] overflow-hidden flex flex-col justify-between pt-32 pb-0">
+    <section className="relative min-h-[100svh] w-full overflow-hidden flex flex-col justify-between pt-32 pb-0">
       
+      {/* ─── HERO BACKGROUND IMAGE ─── */}
+      <div className="absolute inset-0 z-0 pointer-events-none select-none">
+        <img 
+          src="/bg/bg-002.webp" 
+          alt="Lush Farm Fields" 
+          className="w-full h-full object-cover object-center"
+        />
+        <div className="absolute inset-0 bg-black/50" />
+      </div>
+
       {/* ─── DESKTOP BACKGROUND TEXT (Hidden on mobile) ─── */}
-      <div className="hidden md:flex absolute inset-0 z-0 flex-col items-center justify-center pointer-events-none opacity-90 select-none overflow-hidden md:-translate-y-36 lg:-translate-y-44">
-        <h1 className="font-sans font-black tracking-tighter uppercase leading-[0.85] text-black whitespace-nowrap text-center flex flex-col items-center w-full">
+      <div className="hidden md:flex absolute inset-0 z-[1] flex-col items-center justify-center pointer-events-none opacity-90 select-none overflow-hidden md:-translate-y-36 lg:-translate-y-44">
+        <h1 className="font-sans font-black tracking-tighter uppercase leading-[0.85] text-white whitespace-nowrap text-center flex flex-col items-center w-full">
           <span className="md:text-[5.5vw] lg:text-[4.75rem] xl:text-[5.5rem] tracking-tight lg:-ml-32">
             NATURE
           </span>
@@ -50,7 +60,7 @@ export function Hero() {
       <div className="flex md:hidden flex-col items-center justify-between flex-1 w-full px-5 pt-0 pb-4 z-10 gap-3">
         
         {/* 1. Main Text at Top */}
-        <div className="flex flex-col items-center text-center font-sans font-black tracking-tighter uppercase leading-[0.88] text-black whitespace-nowrap pt-1">
+        <div className="flex flex-col items-center text-center font-sans font-black tracking-tighter uppercase leading-[0.88] text-white whitespace-nowrap pt-1">
           <span className="text-3xl sm:text-4xl tracking-tight">NATURE</span>
           <span className="text-5xl sm:text-6xl tracking-tighter">PURE FRESH</span>
         </div>
@@ -75,15 +85,15 @@ export function Hero() {
         </div>
 
         {/* 3. Review Badge below avocado */}
-        <div className="flex items-center gap-3 bg-white/25 backdrop-blur-sm rounded-full py-1.5 px-4 border border-[#0A2612]/10 shadow-sm">
+        <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-full py-1.5 px-4 border border-white/15 shadow-md">
           <div className="w-8 h-8 rounded-full bg-white flex items-center justify-center p-1 overflow-hidden shadow-inner">
             <img src="/products/avacado.png" alt="Review" className="w-full h-full object-contain" />
           </div>
           <div className="flex flex-col items-start">
-            <div className="flex items-center gap-1 text-[#0A2612] font-bold text-sm">
-              <Star className="w-3.5 h-3.5 fill-[#0A2612]" /> 4.9
+            <div className="flex items-center gap-1 text-[#AAFFC7] font-bold text-sm">
+              <Star className="w-3.5 h-3.5 fill-[#FF653F] text-[#FF653F]" /> 4.9
             </div>
-            <span className="text-[9px] uppercase tracking-wider font-semibold text-[#0A2612]/70">150k (Reviews)</span>
+            <span className="text-[9px] uppercase tracking-wider font-semibold text-[#EDE9E6]">150k (Reviews)</span>
           </div>
         </div>
 
@@ -93,29 +103,29 @@ export function Hero() {
           <div className="flex flex-row items-center justify-between w-full px-2 gap-3">
             {/* Left Text: 100% Produce */}
             <div className="flex items-center gap-2">
-              <span className="text-2xl font-bold tracking-tight text-[#0A2612]">100%</span>
-              <span className="text-[11px] font-semibold leading-tight text-[#0A2612] text-left">Natural<br/>Produce</span>
+              <span className="text-2xl font-bold tracking-tight text-[#FF653F]">100%</span>
+              <span className="text-[11px] font-semibold leading-tight text-[#AAFFC7] text-left">Natural<br/>Produce</span>
             </div>
 
             {/* Right Text: Fruits & Sugar stats */}
             <div className="flex items-center gap-3 text-left">
               <div className="flex items-center gap-1.5">
-                <div className="w-6 h-6 rounded-full bg-[#0A2612] flex items-center justify-center">
-                  <Leaf className="w-3 h-3 text-white" />
+                <div className="w-6 h-6 rounded-full bg-[#AAFFC7]/15 border border-[#AAFFC7]/30 flex items-center justify-center">
+                  <Leaf className="w-3 h-3 text-[#AAFFC7]" />
                 </div>
                 <div>
-                  <span className="block font-bold text-[#0A2612] text-xs leading-none">12+</span>
-                  <span className="text-[9px] font-semibold text-[#0A2612]/70 uppercase">Fruits</span>
+                  <span className="block font-bold text-[#FF653F] text-xs leading-none">12+</span>
+                  <span className="text-[9px] font-semibold text-[#EDE9E6] uppercase">Fruits</span>
                 </div>
               </div>
 
               <div className="flex items-center gap-1.5">
-                <div className="w-6 h-6 rounded-full bg-[#0A2612] flex items-center justify-center">
-                  <Droplet className="w-3 h-3 text-white" />
+                <div className="w-6 h-6 rounded-full bg-[#AAFFC7]/15 border border-[#AAFFC7]/30 flex items-center justify-center">
+                  <Droplet className="w-3 h-3 text-[#AAFFC7]" />
                 </div>
                 <div>
-                  <span className="block font-bold text-[#0A2612] text-xs leading-none">0%</span>
-                  <span className="text-[9px] font-semibold text-[#0A2612]/70 uppercase">Sugar</span>
+                  <span className="block font-bold text-[#FF653F] text-xs leading-none">0%</span>
+                  <span className="text-[9px] font-semibold text-[#EDE9E6] uppercase">Sugar</span>
                 </div>
               </div>
             </div>
@@ -125,7 +135,7 @@ export function Hero() {
           <div className="flex justify-center w-full mt-1">
             <Link
               href="/products"
-              className="bg-[#0A2612] text-white px-8 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-[#0A2612]/90 transition-all shadow-md active:scale-95"
+              className="bg-white text-dark-green hover:bg-white/90 px-8 py-3 rounded-full text-sm font-bold tracking-wide transition-all shadow-lg active:scale-95"
             >
               Order Now
             </Link>
@@ -140,15 +150,15 @@ export function Hero() {
         {/* Left Side Content */}
         <div className="w-1/3 flex flex-col items-start text-left gap-5 mt-20 lg:mt-28">
           <div className="flex items-center gap-3">
-            <span className="text-3xl lg:text-4xl font-bold tracking-tight text-[#0A2612]">100%</span>
-            <span className="text-xs lg:text-sm font-semibold leading-tight text-[#0A2612] text-left">Natural<br/>Fresh Produce</span>
+            <span className="text-3xl lg:text-4xl font-bold tracking-tight text-[#FF653F]">100%</span>
+            <span className="text-xs lg:text-sm font-semibold leading-tight text-[#AAFFC7] text-left">Natural<br/>Fresh Produce</span>
           </div>
-          <p className="text-xs lg:text-sm text-[#0A2612]/80 font-medium max-w-[260px] leading-relaxed">
+          <p className="text-xs lg:text-sm text-[#EDE9E6] font-medium max-w-[260px] leading-relaxed">
             Crafted from carefully selected tropical fruits, our produce delivers authentic flavor, natural freshness, and uncompromising quality in every bite.
           </p>
           <Link
             href="/products"
-            className="bg-[#0A2612] text-white px-7 py-3 rounded-full text-sm font-semibold tracking-wide hover:bg-[#0A2612]/90 transition-all shadow-md hover:shadow-lg hover:-translate-y-0.5"
+            className="bg-white text-dark-green hover:bg-white/90 px-7 py-3 rounded-full text-sm font-bold tracking-wide transition-all shadow-lg hover:-translate-y-0.5"
           >
             Order Now
           </Link>
@@ -177,39 +187,39 @@ export function Hero() {
         <div className="w-1/3 flex flex-col items-end text-right gap-8 z-20">
           
           {/* Review Badge */}
-          <div className="flex items-center gap-4 bg-white/20 backdrop-blur-sm rounded-full p-2 pr-6 border border-[#0A2612]/10 shadow-sm">
+          <div className="flex items-center gap-4 bg-white/10 backdrop-blur-md rounded-full p-2 pr-6 border border-white/15 shadow-md">
             <div className="w-10 h-10 rounded-full bg-white flex items-center justify-center p-2 overflow-hidden shadow-inner">
               <img src="/products/avacado.png" alt="Review" className="w-full h-full object-contain" />
             </div>
             <div className="flex flex-col items-start">
-              <div className="flex items-center gap-1 text-[#0A2612] font-bold text-lg">
-                <Star className="w-4 h-4 fill-[#0A2612]" /> 4.9
+              <div className="flex items-center gap-1 text-[#AAFFC7] font-bold text-lg">
+                <Star className="w-4 h-4 fill-[#FF653F] text-[#FF653F]" /> 4.9
               </div>
-              <span className="text-[10px] uppercase tracking-wider font-semibold text-[#0A2612]/70">150k (Reviews)</span>
+              <span className="text-[10px] uppercase tracking-wider font-semibold text-[#EDE9E6]">150k (Reviews)</span>
             </div>
           </div>
 
           {/* Features */}
           <div className="flex flex-col items-start gap-3 text-left mt-2 lg:mt-4">
-            <h3 className="text-[#0A2612] font-bold text-sm mb-1">Rich In Fruits<br/>Vitamins</h3>
+            <h3 className="text-[#AAFFC7] font-bold text-sm mb-1">Rich In Fruits<br/>Vitamins</h3>
             
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-[#0A2612] flex items-center justify-center">
-                <Leaf className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-full bg-[#AAFFC7]/15 border border-[#AAFFC7]/30 flex items-center justify-center">
+                <Leaf className="w-4 h-4 text-[#AAFFC7]" />
               </div>
               <div>
-                <span className="block font-bold text-[#0A2612] text-xs">12+</span>
-                <span className="text-[10px] font-semibold text-[#0A2612]/70 uppercase">Fruits</span>
+                <span className="block font-bold text-[#FF653F] text-xs">12+</span>
+                <span className="text-[10px] font-semibold text-[#EDE9E6] uppercase">Fruits</span>
               </div>
             </div>
 
             <div className="flex items-center gap-3">
-              <div className="w-8 h-8 rounded-full bg-[#0A2612] flex items-center justify-center">
-                <Droplet className="w-4 h-4 text-white" />
+              <div className="w-8 h-8 rounded-full bg-[#AAFFC7]/15 border border-[#AAFFC7]/30 flex items-center justify-center">
+                <Droplet className="w-4 h-4 text-[#AAFFC7]" />
               </div>
               <div>
-                <span className="block font-bold text-[#0A2612] text-xs">0%</span>
-                <span className="text-[10px] font-semibold text-[#0A2612]/70 uppercase">Added Sugar</span>
+                <span className="block font-bold text-[#FF653F] text-xs">0%</span>
+                <span className="text-[10px] font-semibold text-[#EDE9E6] uppercase">Added Sugar</span>
               </div>
             </div>
           </div>

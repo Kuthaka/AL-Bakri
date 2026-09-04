@@ -41,7 +41,13 @@ export function Navbar() {
       >
         <div className="w-full flex items-center justify-between">
           {/* Logo */}
-          <Link href="/" className="relative z-50 text-2xl font-bold tracking-tight text-dark-green uppercase">
+          <Link 
+            href="/" 
+            className={cn(
+              "relative z-50 text-2xl font-bold tracking-tight uppercase transition-colors",
+              isScrolled ? "text-dark-green" : "text-white"
+            )}
+          >
             Al Bakri
           </Link>
 
@@ -51,7 +57,12 @@ export function Navbar() {
               <Link
                 key={link.name}
                 href={link.href}
-                className="text-sm font-medium tracking-wide text-dark-green/80 hover:text-dark-green transition-colors"
+                className={cn(
+                  "text-sm font-medium tracking-wide transition-colors",
+                  isScrolled 
+                    ? "text-dark-green/80 hover:text-dark-green" 
+                    : "text-white/80 hover:text-white"
+                )}
               >
                 {link.name}
               </Link>
@@ -62,7 +73,12 @@ export function Navbar() {
           <div className="hidden md:block">
             <Link
               href="/contact"
-              className="group flex items-center gap-2 bg-dark-green text-ivory px-6 py-2.5 rounded-xl text-sm font-medium transition-all hover:bg-dark-green/90"
+              className={cn(
+                "group flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-medium transition-all shadow-sm",
+                isScrolled 
+                  ? "bg-dark-green text-ivory hover:bg-dark-green/90" 
+                  : "bg-white text-dark-green hover:bg-white/90 font-semibold"
+              )}
             >
               Let's Talk
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
@@ -71,7 +87,10 @@ export function Navbar() {
 
           {/* Mobile Menu Toggle */}
           <button
-            className="md:hidden relative z-50 p-2 text-dark-green"
+            className={cn(
+              "md:hidden relative z-50 p-2 transition-colors",
+              isScrolled || isMobileMenuOpen ? "text-dark-green" : "text-white"
+            )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
             {isMobileMenuOpen ? <X className="w-6 h-6" /> : <Menu className="w-6 h-6" />}
