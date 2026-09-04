@@ -48,7 +48,7 @@ export function Hero() {
         </div>
 
       {/* ─── DESKTOP BACKGROUND TEXT (Hidden on mobile) ─── */}
-      <div className="hidden md:flex absolute inset-0 z-[1] flex-col items-center justify-center pointer-events-none opacity-90 select-none overflow-hidden -translate-y-16 lg:-translate-y-20">
+      <div className="hidden md:flex absolute inset-0 z-[1] flex-col items-center justify-center pointer-events-none opacity-90 select-none overflow-hidden -translate-y-24 lg:-translate-y-32 xl:-translate-y-36">
         <h1 className="font-sans font-black tracking-tighter uppercase leading-[0.85] text-white whitespace-nowrap text-center flex flex-col items-center w-full drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
           <span className="md:text-[5vw] lg:text-[4.5rem] xl:text-[5.25rem] tracking-tight lg:-ml-28">
             NATURE
@@ -62,8 +62,8 @@ export function Hero() {
       {/* ─── MOBILE VIEW CONTENT (Visible only on mobile) ─── */}
       <div className="flex md:hidden flex-col items-center justify-between flex-1 min-h-0 w-full px-4 pt-1 pb-2 z-10 gap-2">
         
-        {/* 1. Main Text at Top */}
-        <div className="flex flex-col items-center text-center font-sans font-black tracking-tighter uppercase leading-[0.88] text-white whitespace-nowrap pt-0.5 drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
+        {/* 1. Main Text at Top - positioned a little lower */}
+        <div className="flex flex-col items-center text-center font-sans font-black tracking-tighter uppercase leading-[0.88] text-white whitespace-nowrap pt-3 sm:pt-4 drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
           <span className="text-3xl sm:text-4xl tracking-tight">NATURE</span>
           <span className="text-5xl sm:text-6xl tracking-tighter">PURE FRESH</span>
         </div>
