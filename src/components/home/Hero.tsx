@@ -231,7 +231,7 @@ export function Hero() {
       </div>
 
       {/* ─── BOTTOM FLOWING MARQUEE ─── */}
-      <div className="w-full bg-[#FFF78D] py-1.5 md:py-2 border-t border-[#0A2612]/10 relative z-30 overflow-hidden flex items-center shadow-sm mt-auto shrink-0">
+      <div className="w-full bg-dark-green py-1.5 md:py-2 border-t border-white/10 relative z-30 overflow-hidden flex items-center shadow-sm mt-auto shrink-0">
         <motion.div
           animate={{ x: ["0%", "-33.333%"] }}
           transition={{ repeat: Infinity, ease: "linear", duration: 16 }}
@@ -240,7 +240,7 @@ export function Hero() {
           {/* Duplicate for seamless looping */}
           {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
             <div key={idx} className="flex items-center gap-2.5 md:gap-3.5 pr-3 md:pr-5">
-              <span className="whitespace-nowrap text-xs sm:text-sm md:text-base font-bold tracking-tight text-[#0A2612]">{item.text}</span>
+              <span className="whitespace-nowrap text-xs sm:text-sm md:text-base font-bold tracking-tight text-[#FAFFCB]">{item.text}</span>
               <div className="w-5 h-5 md:w-6 md:h-6 bg-white rounded-full flex items-center justify-center p-1 shadow-sm border border-black/5 shrink-0">
                 <img src={item.icon} alt="Icon" className="w-full h-full object-contain" />
               </div>
