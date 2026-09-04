@@ -20,7 +20,7 @@ export const products: Product[] = [
     category: "Fruits",
     shortDescription: "Naturally vibrant. Carefully selected.",
     description: "Sourced from the finest tropical orchards, our premium mangoes are hand-picked at peak ripeness to ensure a perfect balance of sweetness and vibrant color. Ideal for high-end retail and culinary applications.",
-    image: "/fruits/Large_Red_Apples_PNG_Clipart.png",
+    image: "/products/mango.png",
     origin: "Tropical Regions",
     season: "Summer",
   },
@@ -53,7 +53,7 @@ export const products: Product[] = [
     category: "Specialty",
     shortDescription: "Creamy texture, rich taste.",
     description: "Our Hass avocados are celebrated for their creamy, buttery texture and nutty flavor. Carefully handled to prevent bruising, they arrive ready for culinary perfection.",
-    image: "/fruits/Large_Red_Apples_PNG_Clipart.png",
+    image: "/products/avacado.png",
     origin: "South America",
     season: "Year-round",
   },
@@ -67,6 +67,17 @@ export const products: Product[] = [
     image: "/fruits/152571-photos-black-grapes-download-hd.png",
     origin: "Middle East",
     season: "Autumn to Winter",
+  },
+  {
+    id: "6",
+    slug: "golden-papaya",
+    name: "Golden Papaya",
+    category: "Fruits",
+    shortDescription: "Sweet, luscious, and sun-ripened.",
+    description: "Hand-picked for exceptional fragrance and natural sweetness, our golden papayas provide vibrant color and rich tropical flavor.",
+    image: "/products/papaya.png",
+    origin: "Tropical Orchards",
+    season: "Year-round",
   }
 ];
 

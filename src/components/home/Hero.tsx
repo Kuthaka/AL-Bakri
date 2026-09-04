@@ -1,17 +1,36 @@
 "use client";
 
-import { motion } from "framer-motion";
+import { useState, useEffect } from "react";
+import { motion, AnimatePresence } from "framer-motion";
 import Link from "next/link";
 import { Star, Leaf, Droplet } from "lucide-react";
 
+const HERO_FRUITS = [
+  { name: "Avocado", image: "/products/avacado.png" },
+  { name: "Pineapple", image: "/products/pineapple.png" },
+  { name: "Mango", image: "/products/mango.png" },
+  { name: "Papaya", image: "/products/papaya.png" },
+];
+
 const MARQUEE_ITEMS = [
   { text: "Avocado", icon: "/products/avacado.png" },
-  { text: "Apple", icon: "/fruits/Large_Red_Apples_PNG_Clipart.png" },
-  { text: "Grapes", icon: "/fruits/152571-photos-black-grapes-download-hd.png" },
-  { text: "Natural Produce", icon: "/fruits/pngtree-delicious-black-grapes-png-image_20004046.png" },
+  { text: "Pineapple", icon: "/products/pineapple.png" },
+  { text: "Mango", icon: "/products/mango.png" },
+  { text: "Papaya", icon: "/products/papaya.png" },
 ];
 
 export function Hero() {
+  const [fruitIndex, setFruitIndex] = useState(0);
+
+  useEffect(() => {
+    const timer = setInterval(() => {
+      setFruitIndex((prev) => (prev + 1) % HERO_FRUITS.length);
+    }, 3500);
+    return () => clearInterval(timer);
+  }, []);
+
+  const currentFruit = HERO_FRUITS[fruitIndex];
+
   return (
     <section className="relative min-h-[100svh] w-full bg-[#FF8F00] overflow-hidden flex flex-col justify-between pt-32 pb-0">
       
@@ -36,19 +55,24 @@ export function Hero() {
           <span className="text-5xl sm:text-6xl tracking-tighter">PURE FRESH</span>
         </div>
 
-        {/* 2. Avocado below that */}
-        <motion.div 
-          initial={{ opacity: 0, scale: 0.9 }}
-          animate={{ opacity: 1, scale: 1 }}
-          transition={{ duration: 0.8, ease: "easeOut" }}
-          className="flex justify-center items-center h-[26vh] sm:h-[30vh] w-full"
-        >
-          <img 
-            src="/products/avacado.png" 
-            alt="Avocado" 
-            className="h-full w-auto object-contain drop-shadow-2xl scale-[1.55] hover:scale-125 transition-transform duration-500"
-          />
-        </motion.div>
+        {/* 2. Fruits Carousel below text */}
+        <div className="flex justify-center items-center h-[26vh] sm:h-[30vh] w-full relative">
+          <AnimatePresence initial={false}>
+            <motion.img 
+              key={currentFruit.image}
+              src={currentFruit.image} 
+              alt={currentFruit.name} 
+              initial={{ opacity: 0, x: 220 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -220 }}
+              transition={{ 
+                x: { type: "spring", stiffness: 240, damping: 25 },
+                opacity: { duration: 0.25 }
+              }}
+              className="absolute h-full w-auto object-contain drop-shadow-2xl scale-[1.55]"
+            />
+          </AnimatePresence>
+        </div>
 
         {/* 3. Review Badge below avocado */}
         <div className="flex items-center gap-3 bg-white/25 backdrop-blur-sm rounded-full py-1.5 px-4 border border-[#0A2612]/10 shadow-sm">
@@ -130,19 +154,24 @@ export function Hero() {
           </Link>
         </div>
 
-        {/* Center Image - Avocado on top of text */}
-        <motion.div 
-          initial={{ opacity: 0, y: 50 }}
-          animate={{ opacity: 1, y: 0 }}
-          transition={{ duration: 1, ease: "easeOut" }}
-          className="w-1/3 flex justify-center items-center z-20 h-[55vh]"
-        >
-          <img 
-            src="/products/avacado.png" 
-            alt="Avocado" 
-            className="w-auto h-[115%] max-w-none object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700 ease-out"
-          />
-        </motion.div>
+        {/* Center Image - Fruits Carousel */}
+        <div className="w-1/3 flex justify-center items-center z-20 h-[55vh] relative">
+          <AnimatePresence initial={false}>
+            <motion.img 
+              key={currentFruit.image}
+              src={currentFruit.image} 
+              alt={currentFruit.name} 
+              initial={{ opacity: 0, x: 280 }}
+              animate={{ opacity: 1, x: 0 }}
+              exit={{ opacity: 0, x: -280 }}
+              transition={{ 
+                x: { type: "spring", stiffness: 220, damping: 24 },
+                opacity: { duration: 0.28 }
+              }}
+              className="absolute w-auto h-[115%] max-w-none object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700 ease-out"
+            />
+          </AnimatePresence>
+        </div>
 
         {/* Right Side Content */}
         <div className="w-1/3 flex flex-col items-end text-right gap-8 z-20">
