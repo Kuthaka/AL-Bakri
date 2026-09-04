@@ -32,11 +32,11 @@ export function Hero() {
   const currentFruit = HERO_FRUITS[fruitIndex];
 
   return (
-    <section className="relative min-h-[100svh] w-full bg-[#FF8F00] overflow-hidden flex flex-col justify-between pt-32 pb-0">
+    <section className="relative min-h-[100svh] w-full bg-[#0A7C6E] overflow-hidden flex flex-col justify-between pt-32 pb-0">
       
       {/* ─── DESKTOP BACKGROUND TEXT (Hidden on mobile) ─── */}
       <div className="hidden md:flex absolute inset-0 z-0 flex-col items-center justify-center pointer-events-none opacity-90 select-none overflow-hidden md:-translate-y-36 lg:-translate-y-44">
-        <h1 className="font-serif font-black tracking-tighter leading-[0.85] text-[#0A2612] whitespace-nowrap text-center flex flex-col items-center w-full">
+        <h1 className="font-sans font-black tracking-tighter uppercase leading-[0.85] text-black whitespace-nowrap text-center flex flex-col items-center w-full">
           <span className="md:text-[5.5vw] lg:text-[4.75rem] xl:text-[5.5rem] tracking-tight lg:-ml-32">
             NATURE
           </span>
@@ -50,7 +50,7 @@ export function Hero() {
       <div className="flex md:hidden flex-col items-center justify-between flex-1 w-full px-5 pt-0 pb-4 z-10 gap-3">
         
         {/* 1. Main Text at Top */}
-        <div className="flex flex-col items-center text-center font-serif font-black tracking-tighter leading-[0.88] text-[#0A2612] whitespace-nowrap pt-1">
+        <div className="flex flex-col items-center text-center font-sans font-black tracking-tighter uppercase leading-[0.88] text-black whitespace-nowrap pt-1">
           <span className="text-3xl sm:text-4xl tracking-tight">NATURE</span>
           <span className="text-5xl sm:text-6xl tracking-tighter">PURE FRESH</span>
         </div>
