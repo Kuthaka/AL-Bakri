@@ -151,7 +151,7 @@ export function Hero() {
       <div className="hidden md:flex relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full flex-1 min-h-0 flex-row items-center justify-between my-auto gap-8 lg:gap-12">
         
         {/* Left Side Content */}
-        <div className="w-1/3 flex flex-col items-start text-left gap-4 lg:gap-5">
+        <div className="w-1/3 flex flex-col items-start text-left gap-4 lg:gap-5 translate-y-12 lg:translate-y-16">
           <div className="flex items-center gap-3">
             <span className="text-3xl lg:text-4xl font-bold tracking-tight text-[#FF653F]">100%</span>
             <span className="text-xs lg:text-sm font-semibold leading-tight text-[#AAFFC7] text-left">Natural<br/>Fresh Produce</span>
@@ -187,7 +187,7 @@ export function Hero() {
         </div>
 
         {/* Right Side Content */}
-        <div className="w-1/3 flex flex-col items-end text-right gap-5 lg:gap-6 z-20">
+        <div className="w-1/3 flex flex-col items-end text-right gap-5 lg:gap-6 z-20 translate-y-12 lg:translate-y-16">
           
           {/* Review Badge */}
           <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-full p-1.5 px-4 pr-5 border border-white/15 shadow-md">
