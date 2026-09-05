@@ -47,6 +47,7 @@ export function Hero() {
           <div className="absolute inset-0 bg-black/50" />
         </div>
 
+
       {/* ─── DESKTOP BACKGROUND TEXT (Hidden on mobile) ─── */}
       <div className="hidden md:flex absolute inset-0 z-[1] flex-col items-center justify-center pointer-events-none opacity-90 select-none overflow-hidden -translate-y-24 lg:-translate-y-32 xl:-translate-y-36">
         <h1 className="font-sans font-black tracking-tighter uppercase leading-[0.85] text-white whitespace-nowrap text-center flex flex-col items-center w-full drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
