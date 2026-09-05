@@ -69,11 +69,17 @@ export default function ProductPage({ params }: { params: { slug: string } }) {
           </div>
 
           <div className="w-full md:w-1/2">
-            <div className="aspect-[4/5] w-full rounded-3xl overflow-hidden relative shadow-xl">
+            <div 
+              className="aspect-[4/5] w-full rounded-3xl overflow-hidden relative shadow-xl flex items-center justify-center p-8 md:p-14 border"
+              style={{
+                backgroundColor: product.bgColor,
+                borderColor: product.borderColor,
+              }}
+            >
               <img
                 src={product.image}
                 alt={product.name}
-                className="absolute inset-0 w-full h-full object-cover"
+                className="w-full h-full object-contain drop-shadow-xl"
               />
             </div>
           </div>

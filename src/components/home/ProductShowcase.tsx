@@ -45,19 +45,36 @@ export function ProductShowcase() {
                 href={`/products/${product.slug}`} 
                 className="group flex flex-col gap-3 md:gap-6 items-center text-center"
               >
-                <div className="w-full aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] bg-dark-green/5 border border-dark-green/10 flex items-center justify-center p-4 md:p-8 transition-colors duration-500 group-hover:bg-dark-green/10">
+                <div 
+                  className="w-full aspect-[4/5] rounded-[1.5rem] md:rounded-[2rem] flex items-center justify-center p-5 md:p-8 transition-all duration-500 group-hover:scale-[1.03] group-hover:shadow-lg relative overflow-hidden"
+                  style={{ 
+                    backgroundColor: product.bgColor,
+                    borderColor: product.borderColor,
+                    borderWidth: "1px",
+                    borderStyle: "solid"
+                  }}
+                >
                   <motion.img 
                     src={product.image} 
                     alt={product.name}
-                    className="w-full h-full object-contain transition-transform duration-700 ease-out group-hover:scale-110"
+                    className="w-full h-full object-contain drop-shadow-md transition-transform duration-700 ease-out group-hover:scale-110"
                   />
                 </div>
                 
-                <div className="flex flex-col items-center gap-1 md:gap-2 px-2 md:px-4">
-                  <span className="text-leaf font-semibold text-[10px] md:text-xs tracking-widest uppercase">
+                <div className="flex flex-col items-center gap-1.5 md:gap-2 px-2 md:px-4">
+                  <span 
+                    className="font-bold text-[10px] md:text-xs tracking-widest uppercase px-3 py-0.5 rounded-full border"
+                    style={{
+                      color: product.accentColor,
+                      backgroundColor: product.bgColor,
+                      borderColor: product.borderColor,
+                    }}
+                  >
                     {product.category}
                   </span>
-                  <h3 className="text-base md:text-2xl font-bold">{product.name}</h3>
+                  <h3 className="text-base md:text-2xl font-bold group-hover:text-leaf transition-colors">
+                    {product.name}
+                  </h3>
                   <p className="text-dark-green/60 text-xs md:text-sm leading-relaxed max-w-[200px] text-balance">
                     {product.shortDescription}
                   </p>
