@@ -49,6 +49,8 @@ export function Navbar() {
     }
   };
 
+  const isDarkHero = pathname === "/";
+
   return (
     <>
       <motion.header
@@ -68,7 +70,7 @@ export function Navbar() {
             href="/" 
             className={cn(
               "relative z-50 text-2xl font-bold tracking-tight uppercase transition-colors shrink-0",
-              isScrolled ? "text-dark-green" : "text-white"
+              isScrolled || !isDarkHero ? "text-dark-green" : "text-white"
             )}
           >
             Al Bakri
@@ -83,7 +85,7 @@ export function Navbar() {
                 onClick={(e) => handleNavClick(e, link.href)}
                 className={cn(
                   "group relative py-1 text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap transition-colors",
-                  isScrolled 
+                  isScrolled || !isDarkHero
                     ? "text-dark-green/80 hover:text-dark-green" 
                     : "text-white/85 hover:text-white"
                 )}
@@ -92,7 +94,7 @@ export function Navbar() {
                 <span 
                   className={cn(
                     "absolute bottom-0 left-0 w-0 h-[2px] transition-all duration-300 ease-out group-hover:w-full rounded-full",
-                    isScrolled ? "bg-dark-green" : "bg-white"
+                    isScrolled || !isDarkHero ? "bg-dark-green" : "bg-white"
                   )} 
                 />
               </Link>
@@ -105,7 +107,7 @@ export function Navbar() {
               href="/contact"
               className={cn(
                 "group flex items-center gap-2 px-5 lg:px-6 py-2.5 rounded-xl text-xs lg:text-sm font-medium transition-all shadow-sm",
-                isScrolled 
+                isScrolled || !isDarkHero
                   ? "bg-dark-green text-ivory hover:bg-dark-green/90" 
                   : "bg-white text-dark-green hover:bg-white/90 font-semibold"
               )}
@@ -119,7 +121,7 @@ export function Navbar() {
           <button
             className={cn(
               "md:hidden relative z-50 p-2 transition-colors",
-              isScrolled || isMobileMenuOpen ? "text-dark-green" : "text-white"
+              isScrolled || isMobileMenuOpen || !isDarkHero ? "text-dark-green" : "text-white"
             )}
             onClick={() => setIsMobileMenuOpen(!isMobileMenuOpen)}
           >
