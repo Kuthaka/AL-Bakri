@@ -1,6 +1,5 @@
 import { getProductBySlug, products } from "@/data/products";
 import { notFound } from "next/navigation";
-import Image from "next/image";
 import Link from "next/link";
 import { ArrowLeft } from "lucide-react";
 

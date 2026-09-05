@@ -1,6 +1,6 @@
 "use client";
 
-import { useState, useEffect } from "react";
+import { useState } from "react";
 import Link from "next/link";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
@@ -86,7 +86,7 @@ export function Navbar() {
                   : "bg-white text-dark-green hover:bg-white/90 font-semibold"
               )}
             >
-              Let's Talk
+              Let&apos;s Talk
               <ArrowRight className="w-4 h-4 transition-transform group-hover:translate-x-1" />
             </Link>
           </div>
@@ -129,7 +129,7 @@ export function Navbar() {
               className="mt-8 bg-dark-green text-ivory px-8 py-4 rounded-xl text-lg font-medium"
               onClick={() => setIsMobileMenuOpen(false)}
             >
-              Let's Talk
+              Let&apos;s Talk
             </Link>
           </nav>
         </motion.div>

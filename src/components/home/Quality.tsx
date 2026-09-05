@@ -37,8 +37,8 @@ export function Quality() {
           </span>
           <h2 className="text-4xl md:text-6xl lg:text-7xl font-bold tracking-tighter leading-[0.9] uppercase max-w-4xl">
             Freshness<br />
-            Isn't A Claim.<br />
-            <span className="text-leaf">It's A Standard.</span>
+            Isn&apos;t A Claim.<br />
+            <span className="text-leaf">It&apos;s A Standard.</span>
           </h2>
         </motion.div>
 
