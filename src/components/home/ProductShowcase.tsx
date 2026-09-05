@@ -9,7 +9,7 @@ export function ProductShowcase() {
   const featuredProducts = products.slice(0, 4);
 
   return (
-    <section className="py-32 px-6 md:px-12 bg-ivory text-dark-green relative">
+    <section id="products" className="py-32 px-6 md:px-12 bg-ivory text-dark-green relative">
       <div className="max-w-7xl mx-auto">
         
         {/* Header */}

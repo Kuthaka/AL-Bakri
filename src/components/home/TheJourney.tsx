@@ -47,7 +47,7 @@ export function TheJourney() {
   const x = useTransform(scrollYProgress, [0, 1], ["0%", "-80%"]);
 
   return (
-    <section ref={containerRef} className="bg-dark-green text-ivory relative h-[500vh]">
+    <section ref={containerRef} id="process" className="bg-dark-green text-ivory relative h-[500vh]">
       <div className="sticky top-0 h-screen overflow-hidden flex flex-col pt-24 md:pt-32">
         <div className="max-w-7xl mx-auto w-full px-6 md:px-12 z-20 mb-8 shrink-0">
           <span className="inline-block text-sm font-semibold tracking-widest uppercase mb-4 border border-ivory/20 rounded-full px-4 py-2">

@@ -15,7 +15,7 @@ export function TheQuestion() {
   const y = useTransform(scrollYProgress, [0, 1], [100, -100]);
 
   return (
-    <section ref={containerRef} className="py-32 md:py-64 bg-dark-green text-ivory relative overflow-hidden">
+    <section ref={containerRef} id="question" className="py-32 md:py-64 bg-dark-green text-ivory relative overflow-hidden">
       
       {/* Background massive typography (Parallax scrolling) */}
       <div className="absolute inset-0 flex flex-col justify-center pointer-events-none z-0">

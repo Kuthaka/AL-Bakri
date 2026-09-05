@@ -2,21 +2,26 @@
 
 import { useState } from "react";
 import Link from "next/link";
+import { usePathname } from "next/navigation";
+import { useLenis } from "lenis/react";
 import { motion, useScroll, useMotionValueEvent } from "framer-motion";
 import { Menu, X, ArrowRight } from "lucide-react";
 import { cn } from "@/lib/utils";
 
 const NAV_LINKS = [
-  { name: "Products", href: "/products" },
-  { name: "Our Story", href: "/about" },
-  { name: "Quality", href: "/quality" },
-  { name: "Process", href: "/process" },
+  { name: "Question", href: "/#question" },
+  { name: "Our Source", href: "/#source" },
+  { name: "Products", href: "/#products" },
+  { name: "Story to Process", href: "/#process" },
+  { name: "Quality", href: "/#quality" },
 ];
 
 export function Navbar() {
   const [isScrolled, setIsScrolled] = useState(false);
   const [isMobileMenuOpen, setIsMobileMenuOpen] = useState(false);
   const { scrollY } = useScroll();
+  const pathname = usePathname();
+  const lenis = useLenis();
 
   useMotionValueEvent(scrollY, "change", (latest) => {
     if (latest > 50) {
@@ -25,6 +30,24 @@ export function Navbar() {
       setIsScrolled(false);
     }
   });
+
+  const handleNavClick = (e: React.MouseEvent<HTMLAnchorElement>, href: string) => {
+    if (href.startsWith("/#") && pathname === "/") {
+      e.preventDefault();
+      const targetId = href.replace("/", "");
+      const el = document.querySelector(targetId);
+      if (el) {
+        if (lenis) {
+          lenis.scrollTo(el as HTMLElement, { offset: -30, duration: 1.2 });
+        } else {
+          el.scrollIntoView({ behavior: "smooth" });
+        }
+      }
+      setIsMobileMenuOpen(false);
+    } else {
+      setIsMobileMenuOpen(false);
+    }
+  };
 
   return (
     <>
@@ -44,7 +67,7 @@ export function Navbar() {
           <Link 
             href="/" 
             className={cn(
-              "relative z-50 text-2xl font-bold tracking-tight uppercase transition-colors",
+              "relative z-50 text-2xl font-bold tracking-tight uppercase transition-colors shrink-0",
               isScrolled ? "text-dark-green" : "text-white"
             )}
           >
@@ -52,16 +75,17 @@ export function Navbar() {
           </Link>
 
           {/* Desktop Nav */}
-          <nav className="hidden md:flex items-center gap-8">
+          <nav className="hidden md:flex items-center gap-5 lg:gap-8">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
+                onClick={(e) => handleNavClick(e, link.href)}
                 className={cn(
-                  "group relative py-1 text-sm font-medium tracking-wide transition-colors",
+                  "group relative py-1 text-xs lg:text-sm font-semibold tracking-wide whitespace-nowrap transition-colors",
                   isScrolled 
                     ? "text-dark-green/80 hover:text-dark-green" 
-                    : "text-white/80 hover:text-white"
+                    : "text-white/85 hover:text-white"
                 )}
               >
                 {link.name}
@@ -76,11 +100,11 @@ export function Navbar() {
           </nav>
 
           {/* Desktop CTA */}
-          <div className="hidden md:block">
+          <div className="hidden md:block shrink-0">
             <Link
               href="/contact"
               className={cn(
-                "group flex items-center gap-2 px-6 py-2.5 rounded-xl text-sm font-medium transition-all shadow-sm",
+                "group flex items-center gap-2 px-5 lg:px-6 py-2.5 rounded-xl text-xs lg:text-sm font-medium transition-all shadow-sm",
                 isScrolled 
                   ? "bg-dark-green text-ivory hover:bg-dark-green/90" 
                   : "bg-white text-dark-green hover:bg-white/90 font-semibold"
@@ -112,13 +136,13 @@ export function Navbar() {
           animate={{ opacity: 1, y: 0 }}
           exit={{ opacity: 0, y: -20 }}
         >
-          <nav className="flex flex-col items-center gap-8 text-center">
+          <nav className="flex flex-col items-center gap-6 text-center">
             {NAV_LINKS.map((link) => (
               <Link
                 key={link.name}
                 href={link.href}
-                className="group relative py-1 text-4xl font-bold tracking-tight text-dark-green"
-                onClick={() => setIsMobileMenuOpen(false)}
+                className="group relative py-1 text-2xl sm:text-3xl font-bold tracking-tight text-dark-green"
+                onClick={(e) => handleNavClick(e, link.href)}
               >
                 {link.name}
                 <span className="absolute bottom-0 left-0 w-0 h-[3px] bg-dark-green transition-all duration-300 ease-out group-hover:w-full rounded-full" />
@@ -126,7 +150,7 @@ export function Navbar() {
             ))}
             <Link
               href="/contact"
-              className="mt-8 bg-dark-green text-ivory px-8 py-4 rounded-xl text-lg font-medium"
+              className="mt-6 bg-dark-green text-ivory px-8 py-3.5 rounded-xl text-base font-medium"
               onClick={() => setIsMobileMenuOpen(false)}
             >
               Let&apos;s Talk
