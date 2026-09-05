@@ -23,16 +23,24 @@ export function Hero() {
         className="relative flex-1 min-h-0 w-full rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden flex flex-col justify-between pt-16 sm:pt-20 md:pt-20 lg:pt-24 pb-0 shadow-lg border border-black/5 bg-dark-green"
       >
         
-        {/* ─── HERO BACKGROUND IMAGE (Micro zoom-in/out continuous cinematic movement) ─── */}
+        {/* ─── HERO BACKGROUND IMAGE (Continuous cinematic movement) ─── */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
+          {/* Mobile Image: Starts from right section, subtle micro-movement to center, then back */}
+          <img
+            src="/bg/bg-005.jpg"
+            alt="Al Bakri Fresh Produce Background"
+            className="md:hidden w-full h-full object-cover object-right animate-mobile-hero-pan"
+          />
+
+          {/* Desktop Image: Balanced micro-zoom (centered) */}
           <motion.img
             src="/bg/bg-005.jpg"
             alt="Al Bakri Fresh Produce Background"
-            className="w-full h-full object-cover object-center will-change-transform"
+            className="hidden md:block w-full h-full object-cover object-center will-change-transform"
             initial={{ scale: 1 }}
-            animate={{ scale: [1, 1.08, 1] }}
+            animate={{ scale: [1, 1.07, 1] }}
             transition={{
-              duration: 16,
+              duration: 10,
               repeat: Infinity,
               ease: "easeInOut",
             }}

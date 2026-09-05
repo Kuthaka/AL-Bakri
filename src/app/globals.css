@@ -26,6 +26,22 @@
   }
 }
 
+@keyframes mobileHeroPan {
+  0%, 100% {
+    object-position: 100% 50%;
+    transform: scale(1.02);
+  }
+  50% {
+    object-position: 75% 50%;
+    transform: scale(1.08);
+  }
+}
+
+.animate-mobile-hero-pan {
+  animation: mobileHeroPan 24s ease-in-out infinite;
+  will-change: object-position, transform;
+}
+
 /* Lenis Recommended CSS */
 html.lenis, html.lenis body {
   height: auto;
