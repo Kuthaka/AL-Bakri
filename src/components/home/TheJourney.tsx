@@ -8,31 +8,31 @@ const STAGES = [
     num: "01",
     title: "Cultivate",
     text: "Dedicated farmers carefully nurturing crops in rich, fertile soils.",
-    image: "/fruits/Large_Red_Apples_PNG_Clipart.png"
+    image: "/story/famers.jpg"
   },
   {
     num: "02",
     title: "Ripen",
     text: "Allowing fruits and vegetables to reach their peak natural sweetness.",
-    image: "/fruits/152571-photos-black-grapes-download-hd.png"
+    image: "/story/tree.jpg"
   },
   {
     num: "03",
     title: "Harvest",
     text: "Hand-picking at the perfect moment for maximum freshness and flavor.",
-    image: "/fruits/pngtree-delicious-black-grapes-png-image_20004046.png"
+    image: "/story/harvest.jpg"
   },
   {
     num: "04",
     title: "Pack",
     text: "Carefully sorted and securely packed to preserve farm-fresh quality.",
-    image: "/fruits/Large_Red_Apples_PNG_Clipart.png"
+    image: "/story/packing.png"
   },
   {
     num: "05",
     title: "Deliver",
     text: "Swift and reliable transport from the farm directly to your business.",
-    image: "/fruits/152571-photos-black-grapes-download-hd.png"
+    image: "/story/deliver.png"
   }
 ];
 
@@ -95,15 +95,12 @@ export function TheJourney() {
 
         {/* Progress Bar */}
         <div className="absolute bottom-12 left-0 right-0 px-6 md:px-12 z-20">
-          <div className="max-w-7xl mx-auto flex items-center gap-4">
-            <div className="flex-1 h-[2px] bg-ivory/20 rounded-full overflow-hidden">
+          <div className="max-w-7xl mx-auto">
+            <div className="w-full h-[2px] bg-ivory/20 rounded-full overflow-hidden">
               <motion.div 
                 className="h-full bg-leaf origin-left"
                 style={{ scaleX: scrollYProgress }}
               />
-            </div>
-            <div className="text-sm font-mono tracking-widest">
-              SCROLL
             </div>
           </div>
         </div>
