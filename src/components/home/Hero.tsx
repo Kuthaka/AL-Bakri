@@ -1,15 +1,70 @@
 "use client";
 
-import { useState, useEffect } from "react";
-import { motion, AnimatePresence } from "framer-motion";
+import { motion } from "framer-motion";
 import Link from "next/link";
-import { Star, Leaf, Droplet } from "lucide-react";
+import { Star, Leaf, Droplet, Sparkles } from "lucide-react";
 
-const HERO_FRUITS = [
-  { name: "Avocado", image: "/products/avacado.png" },
-  { name: "Pineapple", image: "/products/pineapple.png" },
-  { name: "Mango", image: "/products/mango.png" },
-  { name: "Papaya", image: "/products/papaya.png" },
+const SCATTERED_FRUITS = [
+  {
+    name: "Avocado",
+    image: "/products/avacado.png",
+    className: "top-2 left-2 sm:top-4 sm:left-4 md:top-6 md:left-6 lg:top-8 lg:left-8 w-28 sm:w-36 md:w-48 lg:w-56 -rotate-12",
+    blurClass: "blur-[2px] md:blur-[2.5px]",
+    floatY: [-7, 7, -7],
+    duration: 6,
+    delay: 0,
+    opacity: "opacity-85 sm:opacity-90",
+  },
+  {
+    name: "Pineapple",
+    image: "/products/pineapple.png",
+    className: "top-2 right-2 sm:top-3 sm:right-3 md:top-5 md:right-5 lg:top-7 lg:right-7 w-28 sm:w-38 md:w-52 lg:w-60 rotate-12",
+    blurClass: "blur-[2px] md:blur-[2.5px]",
+    floatY: [7, -7, 7],
+    duration: 7,
+    delay: 0.8,
+    opacity: "opacity-85 sm:opacity-90",
+  },
+  {
+    name: "Mango",
+    image: "/products/mango.png",
+    className: "bottom-12 left-2 sm:bottom-14 sm:left-4 md:bottom-16 md:left-6 lg:bottom-16 lg:left-8 w-24 sm:w-32 md:w-44 lg:w-52 rotate-[24deg]",
+    blurClass: "blur-[2px] md:blur-[3px]",
+    floatY: [-8, 6, -8],
+    duration: 5.5,
+    delay: 0.4,
+    opacity: "opacity-85 sm:opacity-90",
+  },
+  {
+    name: "Papaya",
+    image: "/products/papaya.png",
+    className: "bottom-12 right-2 sm:bottom-14 sm:right-4 md:bottom-16 md:right-6 lg:bottom-16 lg:right-8 w-26 sm:w-36 md:w-48 lg:w-56 -rotate-[22deg]",
+    blurClass: "blur-[2px] md:blur-[2.5px]",
+    floatY: [6, -8, 6],
+    duration: 6.5,
+    delay: 1.2,
+    opacity: "opacity-85 sm:opacity-90",
+  },
+  {
+    name: "Papaya Left Edge",
+    image: "/products/papaya.png",
+    className: "top-[44%] -left-7 sm:-left-9 md:-left-12 lg:-left-14 w-20 sm:w-28 md:w-36 lg:w-44 -rotate-[35deg]",
+    blurClass: "blur-[3px] md:blur-[4px]",
+    floatY: [-5, 6, -5],
+    duration: 8,
+    delay: 1.8,
+    opacity: "opacity-65 md:opacity-75",
+  },
+  {
+    name: "Avocado Right Edge",
+    image: "/products/avacado.png",
+    className: "top-[42%] -right-7 sm:-right-9 md:-right-10 lg:-right-12 w-20 sm:w-28 md:w-36 lg:w-42 rotate-[28deg]",
+    blurClass: "blur-[3px] md:blur-[4px]",
+    floatY: [6, -6, 6],
+    duration: 7.2,
+    delay: 1.5,
+    opacity: "opacity-65 md:opacity-75",
+  },
 ];
 
 const MARQUEE_ITEMS = [
@@ -20,235 +75,126 @@ const MARQUEE_ITEMS = [
 ];
 
 export function Hero() {
-  const [fruitIndex, setFruitIndex] = useState(0);
-
-  useEffect(() => {
-    const timer = setInterval(() => {
-      setFruitIndex((prev) => (prev + 1) % HERO_FRUITS.length);
-    }, 3500);
-    return () => clearInterval(timer);
-  }, []);
-
-  const currentFruit = HERO_FRUITS[fruitIndex];
-
   return (
     <section className="relative h-[100dvh] max-h-[100dvh] w-full bg-[#FAFFCB] p-2.5 sm:p-3.5 md:p-5 lg:p-6 flex flex-col overflow-hidden select-none">
       
+      {/* ─── UNORDERED SCATTERED FRUITS SPREADING OVER THE EDGES & BEZELS ─── */}
+      <div className="absolute inset-0 z-20 pointer-events-none select-none overflow-hidden">
+        {SCATTERED_FRUITS.map((fruit, idx) => (
+          <motion.div
+            key={idx}
+            className={`absolute ${fruit.className} ${fruit.opacity} transition-opacity duration-500`}
+            animate={{ y: fruit.floatY }}
+            transition={{
+              repeat: Infinity,
+              repeatType: "mirror",
+              ease: "easeInOut",
+              duration: fruit.duration,
+              delay: fruit.delay,
+            }}
+          >
+            <img
+              src={fruit.image}
+              alt={fruit.name}
+              className={`w-full h-auto object-contain drop-shadow-[0_16px_32px_rgba(0,0,0,0.35)] ${fruit.blurClass}`}
+            />
+          </motion.div>
+        ))}
+      </div>
+
       {/* ─── INNER CONTAINER WITH CURVY BEZEL EDGES ─── */}
       <div className="relative flex-1 min-h-0 w-full rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden flex flex-col justify-between pt-16 sm:pt-20 md:pt-20 lg:pt-24 pb-0 shadow-lg border border-black/5">
         
         {/* ─── HERO BACKGROUND IMAGE ─── */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none">
           <img 
-            src="/bg/bg-002.webp" 
+            src="/bg/bg-003.avif" 
             alt="Lush Farm Fields" 
             className="w-full h-full object-cover object-center"
           />
-          <div className="absolute inset-0 bg-black/50" />
+          <div className="absolute inset-0 bg-black/45" />
         </div>
 
-
-      {/* ─── DESKTOP BACKGROUND TEXT (Hidden on mobile) ─── */}
-      <div className="hidden md:flex absolute inset-0 z-[1] flex-col items-center justify-center pointer-events-none opacity-90 select-none overflow-hidden -translate-y-24 lg:-translate-y-32 xl:-translate-y-36">
-        <h1 className="font-sans font-black tracking-tighter uppercase leading-[0.85] text-white whitespace-nowrap text-center flex flex-col items-center w-full drop-shadow-[0_4px_20px_rgba(0,0,0,0.45)]">
-          <span className="md:text-[5vw] lg:text-[4.5rem] xl:text-[5.25rem] tracking-tight lg:-ml-28">
-            NATURE
-          </span>
-          <span className="md:text-[8.5vw] lg:text-[7.5rem] xl:text-[8.75rem]">
-            PURE FRESH
-          </span>
-        </h1>
-      </div>
-
-      {/* ─── MOBILE VIEW CONTENT (Visible only on mobile) ─── */}
-      <div className="flex md:hidden flex-col items-center justify-between flex-1 min-h-0 w-full px-4 pt-1 pb-2 z-10 gap-2">
-        
-        {/* 1. Main Text at Top - positioned a little lower */}
-        <div className="flex flex-col items-center text-center font-sans font-black tracking-tighter uppercase leading-[0.88] text-white whitespace-nowrap pt-3 sm:pt-4 drop-shadow-[0_3px_12px_rgba(0,0,0,0.45)]">
-          <span className="text-3xl sm:text-4xl tracking-tight">NATURE</span>
-          <span className="text-5xl sm:text-6xl tracking-tighter">PURE FRESH</span>
-        </div>
-
-        {/* 2. Fruits Carousel below text */}
-        <div className="flex justify-center items-center h-[24vh] sm:h-[27vh] max-h-[220px] w-full relative">
-          <AnimatePresence initial={false}>
-            <motion.img 
-              key={currentFruit.image}
-              src={currentFruit.image} 
-              alt={currentFruit.name} 
-              initial={{ opacity: 0, x: 220 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -220 }}
-              transition={{ 
-                x: { type: "spring", stiffness: 240, damping: 25 },
-                opacity: { duration: 0.25 }
-              }}
-              className="absolute h-full w-auto object-contain drop-shadow-2xl scale-[1.35] sm:scale-[1.45]"
-            />
-          </AnimatePresence>
-        </div>
-
-        {/* 3. Review Badge below avocado */}
-        <div className="flex items-center gap-2.5 bg-white/10 backdrop-blur-md rounded-full py-1 px-3.5 border border-white/15 shadow-md">
-          <div className="w-7 h-7 rounded-full bg-white flex items-center justify-center p-1 overflow-hidden shadow-inner">
-            <img src="/products/avacado.png" alt="Review" className="w-full h-full object-contain" />
-          </div>
-          <div className="flex flex-col items-start">
-            <div className="flex items-center gap-1 text-[#AAFFC7] font-bold text-xs sm:text-sm">
-              <Star className="w-3 h-3 fill-[#FF653F] text-[#FF653F]" /> 4.9
-            </div>
-            <span className="text-[8.5px] uppercase tracking-wider font-semibold text-[#EDE9E6]">150k (Reviews)</span>
-          </div>
-        </div>
-
-        {/* 4 & 5. Tightly Grouped: Stats Row + Order Now Button with reduced gap */}
-        <div className="flex flex-col items-center w-full max-w-sm gap-1.5 mt-0.5">
-          {/* Both Texts in a Single Row */}
-          <div className="flex flex-row items-center justify-between w-full px-2 gap-3">
-            {/* Left Text: 100% Produce */}
-            <div className="flex items-center gap-2">
-              <span className="text-xl sm:text-2xl font-bold tracking-tight text-[#FF653F]">100%</span>
-              <span className="text-[10px] sm:text-[11px] font-semibold leading-tight text-[#AAFFC7] text-left">Natural<br/>Produce</span>
-            </div>
-
-            {/* Right Text: Fruits & Sugar stats */}
-            <div className="flex items-center gap-2.5 text-left">
-              <div className="flex items-center gap-1.5">
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#AAFFC7]/15 border border-[#AAFFC7]/30 flex items-center justify-center">
-                  <Leaf className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#AAFFC7]" />
-                </div>
-                <div>
-                  <span className="block font-bold text-[#FF653F] text-[11px] sm:text-xs leading-none">12+</span>
-                  <span className="text-[8.5px] sm:text-[9px] font-semibold text-[#EDE9E6] uppercase">Fruits</span>
-                </div>
-              </div>
-
-              <div className="flex items-center gap-1.5">
-                <div className="w-5 h-5 sm:w-6 sm:h-6 rounded-full bg-[#AAFFC7]/15 border border-[#AAFFC7]/30 flex items-center justify-center">
-                  <Droplet className="w-2.5 h-2.5 sm:w-3 sm:h-3 text-[#AAFFC7]" />
-                </div>
-                <div>
-                  <span className="block font-bold text-[#FF653F] text-[11px] sm:text-xs leading-none">0%</span>
-                  <span className="text-[8.5px] sm:text-[9px] font-semibold text-[#EDE9E6] uppercase">Sugar</span>
-                </div>
-              </div>
-            </div>
+        {/* ─── CENTERED HERO TEXT CONTENT ─── */}
+        <div className="relative z-10 flex-1 flex flex-col items-center justify-center text-center px-4 sm:px-6 md:px-8 max-w-4xl mx-auto w-full my-auto">
+          
+          {/* Top Pill Badge */}
+          <div className="inline-flex items-center gap-2 bg-white/10 backdrop-blur-md rounded-full py-1 sm:py-1.5 px-3.5 sm:px-4 border border-white/20 shadow-md mb-3 sm:mb-4">
+            <Sparkles className="w-3.5 h-3.5 text-[#AAFFC7]" />
+            <span className="text-[11px] sm:text-xs uppercase tracking-wider font-semibold text-[#EDE9E6]">
+              100% Pure & Natural Harvest
+            </span>
           </div>
 
-          {/* Order Now Button - right below with tight gap */}
-          <div className="flex justify-center w-full mt-0.5">
+          {/* Main Hero Headline */}
+          <h1 className="font-sans font-black tracking-tighter uppercase leading-[0.88] text-white whitespace-nowrap text-center flex flex-col items-center w-full drop-shadow-[0_4px_24px_rgba(0,0,0,0.55)]">
+            <span className="text-4xl sm:text-6xl md:text-7xl lg:text-[5.5rem] xl:text-[6.5rem] tracking-tight text-[#AAFFC7]/95">
+              NATURE
+            </span>
+            <span className="text-5xl sm:text-7xl md:text-8xl lg:text-[7.5rem] xl:text-[8.75rem]">
+              PURE FRESH
+            </span>
+          </h1>
+
+          {/* Description Subtitle */}
+          <p className="mt-3 sm:mt-5 max-w-md sm:max-w-lg md:max-w-xl text-center text-xs sm:text-sm md:text-base text-[#EDE9E6]/90 font-medium leading-relaxed drop-shadow-md">
+            Handpicked tropical fruits harvested at peak ripeness. Sourced directly from sustainable orchards for uncompromising flavor and natural vitality.
+          </p>
+
+          {/* Action CTA Buttons */}
+          <div className="mt-5 sm:mt-7 flex flex-wrap items-center justify-center gap-3 sm:gap-4">
             <Link
               href="/products"
-              className="bg-white text-dark-green hover:bg-white/90 px-7 py-2.5 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all shadow-lg active:scale-95"
+              className="bg-white text-dark-green hover:bg-[#FAFFCB] hover:shadow-xl hover:-translate-y-0.5 px-7 sm:px-8 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all shadow-lg active:scale-95"
             >
               Order Now
             </Link>
+            <Link
+              href="/about"
+              className="bg-white/10 hover:bg-white/20 text-white backdrop-blur-md border border-white/25 hover:border-white/40 hover:-translate-y-0.5 px-6 sm:px-7 py-2.5 sm:py-3 rounded-full text-xs sm:text-sm font-bold tracking-wide transition-all shadow-md active:scale-95"
+            >
+              Our Story
+            </Link>
           </div>
+
+          {/* Highlights / Badges Row */}
+          <div className="mt-5 sm:mt-6 flex flex-wrap items-center justify-center gap-3 sm:gap-5 text-white/90">
+            <div className="flex items-center gap-1.5 text-[11px] sm:text-xs md:text-sm font-semibold text-[#EDE9E6]">
+              <Leaf className="w-3.5 h-3.5 text-[#AAFFC7]" />
+              <span>12+ Tropical Fruits</span>
+            </div>
+            <span className="text-white/30 hidden xs:inline">•</span>
+            <div className="flex items-center gap-1.5 text-[11px] sm:text-xs md:text-sm font-semibold text-[#EDE9E6]">
+              <Droplet className="w-3.5 h-3.5 text-[#AAFFC7]" />
+              <span>0% Added Sugar</span>
+            </div>
+            <span className="text-white/30 hidden sm:inline">•</span>
+            <div className="hidden sm:flex items-center gap-1.5 text-[11px] sm:text-xs md:text-sm font-semibold text-[#EDE9E6]">
+              <Star className="w-3.5 h-3.5 fill-[#FF653F] text-[#FF653F]" />
+              <span>4.9 / 5 (150k+ Reviews)</span>
+            </div>
+          </div>
+
         </div>
 
-      </div>
-
-      {/* ─── DESKTOP VIEW CONTENT (Visible only on desktop md:) ─── */}
-      <div className="hidden md:flex relative z-10 max-w-7xl mx-auto px-6 lg:px-12 w-full flex-1 min-h-0 flex-row items-center justify-between my-auto gap-8 lg:gap-12">
-        
-        {/* Left Side Content */}
-        <div className="w-1/3 flex flex-col items-start text-left gap-4 lg:gap-5 translate-y-12 lg:translate-y-16">
-          <div className="flex items-center gap-3">
-            <span className="text-3xl lg:text-4xl font-bold tracking-tight text-[#FF653F]">100%</span>
-            <span className="text-xs lg:text-sm font-semibold leading-tight text-[#AAFFC7] text-left">Natural<br/>Fresh Produce</span>
-          </div>
-          <p className="text-xs lg:text-sm text-[#EDE9E6] font-medium max-w-[260px] leading-relaxed">
-            Crafted from carefully selected tropical fruits, our produce delivers authentic flavor, natural freshness, and uncompromising quality in every bite.
-          </p>
-          <Link
-            href="/products"
-            className="bg-white text-dark-green hover:bg-white/90 px-7 py-2.5 lg:py-3 rounded-full text-xs lg:text-sm font-bold tracking-wide transition-all shadow-lg hover:-translate-y-0.5"
+        {/* ─── BOTTOM FLOWING MARQUEE ─── */}
+        <div className="w-full bg-dark-green py-1.5 md:py-2 border-t border-white/10 relative z-30 overflow-hidden flex items-center shadow-sm mt-auto shrink-0">
+          <motion.div
+            animate={{ x: ["0%", "-33.333%"] }}
+            transition={{ repeat: Infinity, ease: "linear", duration: 16 }}
+            className="flex items-center gap-6 md:gap-10 w-max"
           >
-            Order Now
-          </Link>
+            {/* Duplicate for seamless looping */}
+            {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
+              <div key={idx} className="flex items-center gap-2.5 md:gap-3.5 pr-3 md:pr-5">
+                <span className="whitespace-nowrap text-xs sm:text-sm md:text-base font-bold tracking-tight text-[#FAFFCB]">{item.text}</span>
+                <div className="w-5 h-5 md:w-6 md:h-6 bg-white rounded-full flex items-center justify-center p-1 shadow-sm border border-black/5 shrink-0">
+                  <img src={item.icon} alt="Icon" className="w-full h-full object-contain" />
+                </div>
+              </div>
+            ))}
+          </motion.div>
         </div>
-
-        {/* Center Image - Fruits Carousel */}
-        <div className="w-1/3 flex justify-center items-center z-20 h-[40vh] lg:h-[46vh] max-h-[420px] relative">
-          <AnimatePresence initial={false}>
-            <motion.img 
-              key={currentFruit.image}
-              src={currentFruit.image} 
-              alt={currentFruit.name} 
-              initial={{ opacity: 0, x: 280 }}
-              animate={{ opacity: 1, x: 0 }}
-              exit={{ opacity: 0, x: -280 }}
-              transition={{ 
-                x: { type: "spring", stiffness: 220, damping: 24 },
-                opacity: { duration: 0.28 }
-              }}
-              className="absolute w-auto h-[110%] max-w-none object-contain drop-shadow-2xl hover:scale-105 transition-transform duration-700 ease-out"
-            />
-          </AnimatePresence>
-        </div>
-
-        {/* Right Side Content */}
-        <div className="w-1/3 flex flex-col items-end text-right gap-5 lg:gap-6 z-20 translate-y-12 lg:translate-y-16">
-          
-          {/* Review Badge */}
-          <div className="flex items-center gap-3 bg-white/10 backdrop-blur-md rounded-full p-1.5 px-4 pr-5 border border-white/15 shadow-md">
-            <div className="w-9 h-9 rounded-full bg-white flex items-center justify-center p-1.5 overflow-hidden shadow-inner">
-              <img src="/products/avacado.png" alt="Review" className="w-full h-full object-contain" />
-            </div>
-            <div className="flex flex-col items-start">
-              <div className="flex items-center gap-1 text-[#AAFFC7] font-bold text-base lg:text-lg">
-                <Star className="w-3.5 h-3.5 fill-[#FF653F] text-[#FF653F]" /> 4.9
-              </div>
-              <span className="text-[9px] lg:text-[10px] uppercase tracking-wider font-semibold text-[#EDE9E6]">150k (Reviews)</span>
-            </div>
-          </div>
-
-          {/* Features */}
-          <div className="flex flex-col items-start gap-2.5 lg:gap-3 text-left">
-            <h3 className="text-[#AAFFC7] font-bold text-xs lg:text-sm mb-0.5">Rich In Fruits<br/>Vitamins</h3>
-            
-            <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-full bg-[#AAFFC7]/15 border border-[#AAFFC7]/30 flex items-center justify-center">
-                <Leaf className="w-3.5 h-3.5 text-[#AAFFC7]" />
-              </div>
-              <div>
-                <span className="block font-bold text-[#FF653F] text-xs">12+</span>
-                <span className="text-[9px] font-semibold text-[#EDE9E6] uppercase">Fruits</span>
-              </div>
-            </div>
-
-            <div className="flex items-center gap-2.5">
-              <div className="w-7 h-7 rounded-full bg-[#AAFFC7]/15 border border-[#AAFFC7]/30 flex items-center justify-center">
-                <Droplet className="w-3.5 h-3.5 text-[#AAFFC7]" />
-              </div>
-              <div>
-                <span className="block font-bold text-[#FF653F] text-xs">0%</span>
-                <span className="text-[9px] font-semibold text-[#EDE9E6] uppercase">Added Sugar</span>
-              </div>
-            </div>
-          </div>
-
-        </div>
-      </div>
-
-      {/* ─── BOTTOM FLOWING MARQUEE ─── */}
-      <div className="w-full bg-dark-green py-1.5 md:py-2 border-t border-white/10 relative z-30 overflow-hidden flex items-center shadow-sm mt-auto shrink-0">
-        <motion.div
-          animate={{ x: ["0%", "-33.333%"] }}
-          transition={{ repeat: Infinity, ease: "linear", duration: 16 }}
-          className="flex items-center gap-6 md:gap-10 w-max"
-        >
-          {/* Duplicate for seamless looping */}
-          {[...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS, ...MARQUEE_ITEMS].map((item, idx) => (
-            <div key={idx} className="flex items-center gap-2.5 md:gap-3.5 pr-3 md:pr-5">
-              <span className="whitespace-nowrap text-xs sm:text-sm md:text-base font-bold tracking-tight text-[#FAFFCB]">{item.text}</span>
-              <div className="w-5 h-5 md:w-6 md:h-6 bg-white rounded-full flex items-center justify-center p-1 shadow-sm border border-black/5 shrink-0">
-                <img src={item.icon} alt="Icon" className="w-full h-full object-contain" />
-              </div>
-            </div>
-          ))}
-        </motion.div>
-      </div>
 
       </div> {/* ─── END INNER CONTAINER ─── */}
 
