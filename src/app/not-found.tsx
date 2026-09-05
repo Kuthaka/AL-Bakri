@@ -6,7 +6,7 @@ import { ArrowRight, Home, Compass, MessageSquare } from "lucide-react";
 
 export default function NotFound() {
   return (
-    <div className="bg-ivory text-dark-green min-h-[90vh] flex items-center justify-center p-4 sm:p-6 md:p-12 pt-28 sm:pt-32">
+    <div className="bg-ivory text-dark-green min-h-screen flex items-center justify-center p-4 sm:p-6 md:p-12 pt-36 sm:pt-40 md:pt-44 lg:pt-48 pb-16 sm:pb-24">
       <div className="max-w-4xl w-full">
         <motion.div
           initial={{ opacity: 0, y: 30, scale: 0.98 }}
