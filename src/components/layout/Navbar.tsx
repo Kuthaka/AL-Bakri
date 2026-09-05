@@ -99,37 +99,53 @@ export function Navbar() {
         </div>
       </motion.header>
 
-      {/* Mobile Menu Dropdown */}
+      {/* Mobile Menu Dropdown & Backdrop */}
       <AnimatePresence>
         {isMobileMenuOpen && (
-          <motion.div
-            className={cn(
-              "md:hidden fixed top-16 sm:top-20 inset-x-4 max-w-sm mx-auto z-40 rounded-xl p-5 shadow-2xl backdrop-blur-xl border flex flex-col items-center gap-4 text-center",
-              isScrolled 
-                ? "bg-[#FFF78D]/95 border-dark-green/15 text-dark-green" 
-                : "bg-black/90 border-white/20 text-white"
-            )}
-            initial={{ opacity: 0, y: -15, scale: 0.98 }}
-            animate={{ opacity: 1, y: 0, scale: 1 }}
-            exit={{ opacity: 0, y: -15, scale: 0.98 }}
-            transition={{ duration: 0.2 }}
-          >
-            <nav className="flex flex-col items-center gap-3.5 w-full">
-              {NAV_LINKS.map((link) => (
-                <Link
-                  key={link.name}
-                  href={link.href}
-                  className={cn(
-                    "text-base font-semibold tracking-tight transition-colors py-1.5 w-full text-center rounded-lg",
-                    isScrolled ? "text-dark-green hover:bg-dark-green/10" : "text-white hover:bg-white/10"
-                  )}
-                  onClick={() => setIsMobileMenuOpen(false)}
-                >
-                  {link.name}
-                </Link>
-              ))}
-            </nav>
-          </motion.div>
+          <>
+            {/* Backdrop Dimmer */}
+            <motion.div
+              key="mobile-backdrop"
+              className="md:hidden fixed inset-0 bg-black/60 backdrop-blur-sm z-40"
+              initial={{ opacity: 0 }}
+              animate={{ opacity: 1 }}
+              exit={{ opacity: 0 }}
+              onClick={() => setIsMobileMenuOpen(false)}
+            />
+
+            {/* Floating Dropdown Card */}
+            <motion.div
+              key="mobile-card"
+              className={cn(
+                "md:hidden fixed top-16 sm:top-20 inset-x-4 max-w-sm mx-auto z-50 rounded-xl p-6 shadow-2xl border flex flex-col items-center gap-4 text-center",
+                isScrolled 
+                  ? "bg-[#FFF78D]/98 border-dark-green/20 text-dark-green shadow-dark-green/20" 
+                  : "bg-[#071F17]/95 border-white/20 text-white shadow-black/50 backdrop-blur-xl"
+              )}
+              initial={{ opacity: 0, y: -15, scale: 0.98 }}
+              animate={{ opacity: 1, y: 0, scale: 1 }}
+              exit={{ opacity: 0, y: -15, scale: 0.98 }}
+              transition={{ duration: 0.2 }}
+            >
+              <nav className="flex flex-col items-center gap-3.5 w-full">
+                {NAV_LINKS.map((link) => (
+                  <Link
+                    key={link.name}
+                    href={link.href}
+                    className={cn(
+                      "text-base font-semibold tracking-tight transition-colors py-2 w-full text-center rounded-lg active:scale-98",
+                      isScrolled 
+                        ? "text-dark-green hover:bg-dark-green/10" 
+                        : "text-[#FAFFCB] hover:bg-white/10"
+                    )}
+                    onClick={() => setIsMobileMenuOpen(false)}
+                  >
+                    {link.name}
+                  </Link>
+                ))}
+              </nav>
+            </motion.div>
+          </>
         )}
       </AnimatePresence>
     </>
