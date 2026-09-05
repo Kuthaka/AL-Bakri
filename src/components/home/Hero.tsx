@@ -23,17 +23,20 @@ export function Hero() {
         className="relative flex-1 min-h-0 w-full rounded-[1.5rem] sm:rounded-[2rem] md:rounded-[2.5rem] lg:rounded-[3rem] overflow-hidden flex flex-col justify-between pt-16 sm:pt-20 md:pt-20 lg:pt-24 pb-0 shadow-lg border border-black/5 bg-dark-green"
       >
         
-        {/* ─── HERO BACKGROUND VIDEO (Repeat mode, without sound) ─── */}
+        {/* ─── HERO BACKGROUND IMAGE (Micro zoom-in/out continuous cinematic movement) ─── */}
         <div className="absolute inset-0 z-0 pointer-events-none select-none overflow-hidden">
-          <video
-            autoPlay
-            loop
-            muted
-            playsInline
-            className="w-full h-full object-cover object-center"
-          >
-            <source src="/bg/bg-video.mp4" type="video/mp4" />
-          </video>
+          <motion.img
+            src="/bg/bg-005.jpg"
+            alt="Al Bakri Fresh Produce Background"
+            className="w-full h-full object-cover object-center will-change-transform"
+            initial={{ scale: 1 }}
+            animate={{ scale: [1, 1.08, 1] }}
+            transition={{
+              duration: 16,
+              repeat: Infinity,
+              ease: "easeInOut",
+            }}
+          />
           <div className="absolute inset-0 bg-black/45" />
         </div>
 
@@ -57,12 +60,12 @@ export function Hero() {
         {/* ─── MOBILE VIEW CONTENT (Centered & balanced, no overflow) ─── */}
         <div className="flex md:hidden flex-col items-center justify-between flex-1 min-h-0 w-full px-4 pt-1 pb-3 z-10">
           
-          {/* 1. Main Headline with Smooth Entrance Transition */}
+          {/* 1. Main Headline with Smooth Entrance Transition - positioned lower toward reviews badge */}
           <motion.div 
             initial={{ opacity: 0, y: -24, scale: 0.94 }}
             animate={{ opacity: 1, y: 0, scale: 1 }}
             transition={{ duration: 0.85, delay: 0.1, ease: [0.16, 1, 0.3, 1] }}
-            className="flex flex-col items-center text-center font-sans font-black tracking-tighter uppercase leading-[0.88] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] pt-1"
+            className="relative top-14 flex flex-col items-center text-center font-sans font-black tracking-tighter uppercase leading-[0.88] text-white drop-shadow-[0_4px_16px_rgba(0,0,0,0.6)] pt-7 sm:pt-9"
           >
             <span className="text-[clamp(1.75rem,6vw,2.5rem)] tracking-tight">NATURE</span>
             <span className="text-[clamp(2.5rem,10vw,3.75rem)] tracking-tighter">PURE FRESH</span>
@@ -146,7 +149,7 @@ export function Hero() {
             initial={{ opacity: 0, y: 14 }}
             animate={{ opacity: 1, y: 0 }}
             transition={{ duration: 0.7, delay: 0.42, ease: [0.16, 1, 0.3, 1] }}
-            className="flex justify-center w-full"
+            className="relative -top-7 flex justify-center w-full"
           >
             <Link
               href="/products"
